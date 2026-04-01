@@ -15,6 +15,8 @@ constructor(page){
     this.close=page.locator('//button[@class="btn btn-secondary"]').nth(2)
     this.signout=page.locator('#logout2')
 
+   
+
 }
 async validlogin(){
     await this.loginclick.click()
@@ -43,6 +45,15 @@ async logout(){
     await this.password.fill('test24$')
     await this.loginselection.click()
     await this.signout.click()
+}
+async invalidlogin(username,password){
+
+    await this.loginclick.click()
+    await this.username.fill(username)
+    await this.password.fill(password)
+    await this.loginselection.click()
+    return this.page
+
 }
 }
 module.exports=Signin;
